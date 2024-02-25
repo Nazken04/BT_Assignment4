@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Wallet - WallStreet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        button {
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-light py-3">
+        <div class="container text-center">
+            <img src="logo.png" alt="WallStreet Logo" class="img-fluid mr-2" style="width: 50px;">
+            <h1 class="d-inline-block align-middle">WallStreet</h1>
+        </div>
+    </header>
+    <main class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h2 class="card-title text-center mb-4">Connect Your Wallet</h2>
+                            <div class="text-center">
+                                <div class="button-container">
+                                    <button id="connect-button" type="button" class="btn btn-warning btn-lg">Click
+                                        here</button>
+                                </div>
+                                <div class="button-container mt-3 d-none" id="profile-button-container">
+                                    <button id="profile-button" type="button" class="btn btn-primary btn-lg"><a
+                                            href="user_profile.html">Go back to the user profile</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('connect-button').addEventListener('click', event => {
+            let account;
+            let buttonContainer = document.getElementById('button-container');
+            let profileButtonContainer = document.getElementById('profile-button-container');
+            let connectButton = document.getElementById('connect-button');
+            ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
+                account = accounts[0];
+                console.log(account);
+                connectButton.textContent = account;
+                connectButton.disabled = true;
+                profileButtonContainer.classList.remove('d-none');
+
+                ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
+                    console.log(result);
+                    let wei = parseInt(result, 16);
+                    let balance = wei / (10 ** 18);
+                    console.log(balance + " ETH");
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

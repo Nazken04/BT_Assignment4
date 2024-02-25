@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - WallStreet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .avatar-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .profile-container {
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+
+        .profile-info {
+            margin-left: 20px;
+        }
+
+        .nav-pills .nav-link {
+            border-radius: 50px;
+        }
+
+        #home-tab2.nav-link.active,
+        #home-tab2.nav-link:focus,
+        #home-tab2.nav-link:hover {
+            background-color: blue;
+            color: white;
+            outline: none;
+        }
+
+
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header section -->
+    <header class="bg-light py-3">
+        <div class="container text-center">
+            <h1 class="d-inline-block align-middle">WallStreet</h1>
+        </div>
+    </header>
+
+    <!-- Button section -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="main_page.html" class="btn btn-primary btn-sm btn-block">Main Page</a>
+            </div>
+            <div class="col-md-6">
+                <a href="friends_page.html" class="btn btn-secondary btn-sm btn-block">My Friends</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content section -->
+    <main class="py-5">
+        <div class="container">
+            <!-- Profile section -->
+            <div class="row profile-container">
+                <div class="col-md-3 text-center">
+                    <img class="avatar-img">
+                    <input type="file" accept="image/*" id="avatar-upload" class="d-none">
+                    <button type="button" id="avatar-upload-btn" class="btn btn-secondary btn-block mt-3">Upload
+                        Avatar</button>
+                    <button type="button" id="connect-wallet-btn" class="btn btn-primary btn-block mt-3">Connect
+                        Wallet</button> 
+                </div>
+                <div class="col-md-9">
+                    <div class="profile-info">
+                        <h2 class="mb-3">User Profile</h2>
+                        <form id="profile-form">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" class="form-control" id="first-name"
+                                    placeholder="Enter your first name">
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" class="form-control" id="last-name"
+                                    placeholder="Enter your last name">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Contact Address</label>
+                                <input type="text" class="form-control" id="address" placeholder="Enter your address">
+                            </div>
+                            <button type="button" id="save-all-btn" class="btn btn-primary btn-block">Save All</button>
+                        </form>
+                        <div id="profile-info-display" style="display: none;">
+                            <p id="saved-first-name"></p>
+                            <p id="saved-last-name"></p>
+                            <p id="saved-address"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4 d-flex justify-content-center">
+                    <ul class="nav nav-pills nav-fill gap-2 p-2 small rounded-5" id="pillNav2" role="tablist"
+                        style="background-color: white;">
+                        <li class="nav-item text-center flex-grow-1" role="presentation">
+                            <button class="nav-link rounded-5" id="nft-tab2" data-bs-toggle="tab" type="button"
+                                role="tab" onclick="changeColor('nft-tab2')" style="padding: 12px 36px;">NFT</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <ul class="nav nav-pills nav-fill gap-2 p-2 small rounded-5" id="pillNav2" role="tablist"
+                        style="background-color: white;">
+                        <li class="nav-item text-center flex-grow-1" role="presentation">
+                            <button class="nav-link rounded-5" id="transaction-tab2" data-bs-toggle="tab" type="button"
+                                role="tab" aria-selected="false" onclick="changeColor('transaction-tab2')"
+                                style="padding: 12px 36px;">Transaction</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <ul class="nav nav-pills nav-fill gap-2 p-2 small rounded-5" id="pillNav2" role="tablist"
+                        style="background-color: white;">
+                        <li class="nav-item text-center flex-grow-1" role="presentation">
+                            <button class="nav-link rounded-5" id="activity-tab2" data-bs-toggle="tab" type="button"
+                                role="tab" aria-selected="false" onclick="changeColor('activity-tab2')"
+                                style="padding: 12px 36px;">Activity</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            // Handle avatar upload button click
+            $("#avatar-upload-btn").click(function () {
+                $("#avatar-upload").click();
+            });
+
+            // Handle file selection
+            $("#avatar-upload").change(function () {
+                var file = this.files[0]; 
+                if (file) {
+                    var reader = new FileReader(); 
+                    reader.onload = function (e) {
+                        $(".avatar-img").attr("src", e.target.result); 
+                    }
+                    reader.readAsDataURL(file); 
+                }
+            });
+
+            // Handle Save All button click
+            $("#save-all-btn").click(function () {
+                var firstName = $("#first-name").val();
+                var lastName = $("#last-name").val();
+                var address = $("#address").val();
+
+                $("#saved-first-name").text("First Name: " + firstName);
+                $("#saved-last-name").text("Last Name: " + lastName);
+                $("#saved-address").text("Contact Address: " + address);
+                $("#profile-form").hide();
+                $("#profile-info-display").show();
+            });
+
+            // Handle Connect Wallet button click
+            $("#connect-wallet-btn").click(function () {
+        
+                window.location.href = "connect_wallet.html";
+            });
+
+            // Function to change button color on click
+            function changeColor(buttonId) {
+                $(".nav-link").removeClass("active");
+                $("#" + buttonId).addClass("active");
+            }
+        });
+    </script>
+</body>
+
+</html>

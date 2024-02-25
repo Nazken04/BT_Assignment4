@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Friends - WallStreet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .friends-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .friend-request-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .friend-request {
+            margin-bottom: 10px;
+        }
+
+        .all-users-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .user-list {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header section -->
+    <header>
+        <div class="container">
+            <h1>WallStreet</h1>
+        </div>
+    </header>
+
+    <!-- Button section -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="main_page.html" class="btn btn-primary btn-sm btn-block">Main Page</a>
+            </div>
+            <div class="col-md-6">
+                <a href="user_profile.html" class="btn btn-secondary btn-sm btn-block">My Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content section -->
+    <div class="container">
+        <div class="row">
+            <!-- My Friends container -->
+            <div class="col-md-6">
+                <div class="friends-container">
+                    <h3>My Friends</h3>
+                    <ul class="list-group" id="my-friends-list">
+                    </ul>
+                </div>
+                <!-- Friend Requests container -->
+                <div class="friend-request-container">
+                    <h3>Friend Requests</h3>
+
+                    <div class="friend-request">
+                        <p>John Doe</p>
+                        <button class="btn btn-primary accept-request">Accept</button>
+                        <button class="btn btn-danger">Decline</button>
+                    </div>
+                    <div class="friend-request">
+                        <p>Jane Smith</p>
+                        <button class="btn btn-primary accept-request">Accept</button>
+                        <button class="btn btn-danger">Decline</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Users container -->
+            <div class="col-md-6">
+                <div class="all-users-container">
+                    <h3>All Users</h3>
+                    <input type="text" class="form-control" id="search-user" placeholder="Search users...">
+                    <div class="user-list">
+                        <!-- List of all users will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script>
+        // Function to handle accepting friend request
+        $(".accept-request").click(function () {
+            var friendRequestMessage = $(this).prev().text().trim();
+            $(this).parent().remove();
+            $("#my-friends-list").append("<li class='list-group-item'>" + friendRequestMessage + "</li>");
+        });
+
+        // Function to handle declining friend request
+        $(".friend-request-container").on("click", ".btn-danger", function () {
+            $(this).parent().remove();
+        });
+    </script>
+</body>
+
+</html>

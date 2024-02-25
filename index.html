@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WallStreet - Registration</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles\style.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .main {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 2px #0056b3;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .box {
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        form h2 {
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header section -->
+    <header class="bg-light py-3">
+        <div class="container text-center">
+            <h1 class="d-inline-block align-middle">WallStreet</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6 main">
+                <form action="/sign_up" method="POST">
+                    <h2>SignUp Form</h2>
+                    <input type="text" class="box" id="name" name="name" placeholder="Name" required />
+                    <input type="text" class="box" id="email" name="email" placeholder="Email" required />
+                    <input type="text" class="box" id="password" name="password" placeholder="Password" required />
+                    <input type="submit" value="Submit" id="submit" class="btn btn-primary" style="width: 100%;" />
+                </form>
+                <p class="mt-3">Do you have an account? <a href="/login.html">Login here</a></p>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
