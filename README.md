@@ -6,6 +6,10 @@ Our all demo pages of assignment are Registration/Login, User profile (from user
 The user must first register or if they already have an account, log in. The password must be at least 6 characters long.
 ![image](https://github.com/Tilekova17/Azhar/assets/154979922/1b3b2abf-c6c6-4e35-91ea-1dff58eb6323)
 ![image](https://github.com/Tilekova17/Azhar/assets/154979922/f214a244-9fdf-4604-b645-70ebae70b8bb)
+
+# Database
+![image](https://github.com/Nazken04/BT_Assignment4/assets/71633984/06f9008c-4f76-410d-983f-efe8bfc84d66)
+
 # User profile:
 When users are logged into their account, they are taken to this page.
 ![image](https://github.com/Tilekova17/Azhar/assets/154979922/0871594e-5211-423c-8f1c-661c2d3ad73a)
@@ -38,3 +42,7 @@ On this page you can see all your friends, friends request and all users to find
 ![image](https://github.com/Tilekova17/Azhar/assets/154979922/5bbeaa57-1488-4a08-8965-39c0df72726a)
 If you accept the request, it will automatically go to your friends. But if you decline, it will disappear.
 ![image](https://github.com/Tilekova17/Azhar/assets/154979922/f675765e-07bb-4fd5-9c6c-c820e50c1a6b)
+
+## License
+[MIT] https://opensource.org/license/mit/
+
